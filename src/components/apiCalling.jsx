@@ -30,9 +30,6 @@ export const ApiCalling = () => {
         </Loader>
         
         : <DataTable headers={["name","username","email","phone","website"]} data={users}/>}
-
-
     </>
-
     )
 }
