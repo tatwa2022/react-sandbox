@@ -1,17 +1,28 @@
- import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 //  import { LocalStorage } from './components/localStorage'
-import { ApiCalling } from './components/apiCalling'
+// import { ApiCalling } from './components/apiCalling'
+import Layout from './components/Layout/Layout'
+import Home from './pages/Home'
+import About from './pages/About'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Login from "./pages/Login";
+import Authentication from './components/Layout/Authentication'
 
 
 const App = () => {
   return <>
     {/* <LocalStorage/> */}
     {/* <ApiCalling/> */}
-    <div  className='flex flex-col lg:flex-row'>
-      <p className='text-base font-bold text-blue-400 sm:text-yellow-400 lg:text-red-600 m-10'>Tailwind CSS</p>
-      <p className='text-base font-bold text-blue-400 sm:text-yellow-400 lg:text-red-600 m-10'>Tailwind CSS</p>
-      <p className='text-base font-bold text-blue-400 sm:text-yellow-400 lg:text-red-600 m-10'>Tailwind CSS</p>
-    </div>
+
+    <Routes>
+      <Route path='/login' element={<Login/>}/>
+      <Route element={<Authentication><Layout /></Authentication>}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Route>
+      {/* <Route path="/about-details/:id" element={<About/>} /> */}
+      <Route path='*' element={<><div>Not found</div></>} />
+    </Routes>
   </>
 }
 
